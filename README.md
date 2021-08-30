@@ -8,4 +8,4 @@ User has to just install this app from this repo in your smartphone and just add
                                                           ----------HOW TO INSTALL----------
      1) On the rightmost side of repo there you can see 'Releases' section .
      2) Click on "Subscription Manager" 
-     3) Finally click on "SM.v1.1.apk" and install it , now you are ready to use.
+     3) Finally click on "SM.v1.1.apk" and install it , now you are ready to use it.
