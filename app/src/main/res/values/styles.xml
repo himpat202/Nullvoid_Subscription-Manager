@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<resources>
+    <style name="HeadingStyle">
+        <item name="android:layout_weight">1</item>
+        <item name="android:paddingTop">@dimen/activity_margin</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:textColor">@color/teal_700</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textAppearance">?android:textAppearanceSmall</item>
+    </style>
+
+    <style name="EditTextStyle">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_weight">2</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+</resources>
