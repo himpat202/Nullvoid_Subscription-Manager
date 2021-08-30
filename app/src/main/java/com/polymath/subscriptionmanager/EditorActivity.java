@@ -1,8 +1,15 @@
 package com.polymath.subscriptionmanager;
 
 import android.content.ContentValues;
+
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+
+import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
+import android.os.Bundle;
+import android.provider.CalendarContract;
+
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
@@ -15,6 +22,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.polymath.subscriptionmanager.data.SubscriptionContract;
 import com.polymath.subscriptionmanager.data.SubscriptionContract.*;
 import com.polymath.subscriptionmanager.data.SubscriptionDbHelper;
+
+
+
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+
 
 public class EditorActivity extends AppCompatActivity
 {
@@ -83,6 +96,30 @@ public class EditorActivity extends AppCompatActivity
         }
 
         //TODO:Throw Calendar Intent
+
+
+
+        //Extracting the End Date from the StartDate
+        GregorianCalendar endDate = new GregorianCalendar(year, month, date);
+        endDate.add(Calendar.DAY_OF_MONTH, days-1);
+
+        //Making a calendar Intent
+        Intent calIntent = new Intent(Intent.ACTION_INSERT);
+        calIntent.setType("vnd.android.cursor.item/event");
+        calIntent.putExtra(CalendarContract.Events.TITLE, "Subscription Reminder for "+nameString);
+        calIntent.putExtra(CalendarContract.Events.DESCRIPTION, "This is the reminder by the Subscription Reminder app to cancel " +
+                "your subscription for the service "+nameString+". Your subscription will auto-renew tomorrow. Please " +
+                "cancel your subscription now to avoid being charged for the next session period :)");
+
+
+        calIntent.putExtra(CalendarContract.EXTRA_EVENT_ALL_DAY, false);
+        calIntent.putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME,
+                endDate.getTimeInMillis()+32400000);
+        calIntent.putExtra(CalendarContract.EXTRA_EVENT_END_TIME,
+                endDate.getTimeInMillis()+32700000);
+
+        //Throw Calendar Intent
+        startActivity(calIntent);
 
 
         //TODO:Display
